@@ -1,27 +1,77 @@
 import React, {useEffect} from 'react';
-import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
-import {Container, Typography,MenuItem, Box, FormControl, InputLabel, Select} from '@material-ui/core';
+import {Grid, Container,Button,Icon, Typography,MenuItem, Box, FormControl, InputLabel, Select} from '@material-ui/core';
+import {ArrowForward, ArrowDropDown, CheckCircle} from '@material-ui/icons'
 import img from './assets/Logotyp-Punkta.png'
 import axios from 'axios';
-
+import FormInput from './components/FomInput'
+import FormButton from './components/FormButton'
 const useStyles = makeStyles(theme => ({
+container:{
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  width: '250px',
+  margin: '0 auto',
+},
+  header:{
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '250px',
+    '&:after': {
+      content: '""',
+      position: 'absolute',
+      zIndex: '-1',
+      top: '-162px',
+      width: '372px',
+      height: '372px',
+      backgroundColor: '#F5F5F5',
+      borderRadius: '50% 50%',
+    }
+  },
+  logo: {
+    width: '131px',
+    height: '59px',
+    marginTop: '12px'
+  },
+  headline: {
+    color: '#0A2C48',
+    fontFamily: 'Red Hat Display, sans-serif',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    lineHeight: '21px',
+    marginTop: '29.5px',
+    marginBottom: '90px',
+    textTransform: 'uppercase',
+    textAlign: 'center',
+  },
+  form:{
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '100%',
+    height: '164px'
+  },
   button: {
-    display: 'block',
-    marginTop: theme.spacing(2),
+    marginTop: '40px',
   },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
+  x:{
+    marginTop: '50px'
+  }
 }));
 
+const styles = theme => ({
+   mainColor:{
+    color: 'red'
+  }
+})
 function App() {
-
   const classes = useStyles();
-  const [brand, setBrand] = React.useState('');
-  const [model, setModel] = React.useState('');
-  const [fuel, setFuel] = React.useState('');
+  const [brand, setBrand] = React.useState(false);
+  const [model, setModel] = React.useState(false);
+  const [fuel, setFuel] = React.useState(false);
   const handleChangeBrand = event => {
     setBrand(event.target.value);
   };
@@ -33,83 +83,28 @@ function App() {
   };
 
 useEffect(()=>{
-
-
-
   axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
-  
   axios({
     method: 'GET',
     url: 'https://api-dev.mfind.pl/cars'
   })
   .then(res => console.log(res))
-
-
 })
   return (
-    <div>
+    <div className={classes.container}>
+      <header className={classes.header}>
+      <img src={img} alt="Logotyp-Punkta" className={classes.logo}/>
+      <Typography className={classes.headline}>oszczędź nawet 580 złotych na oc</Typography>
+      </header>
+      
+      <form className={classes.form}>
+      <FormInput name="Marka"></FormInput>
+      <FormInput name="Model"></FormInput>
+      <FormInput name="Typ paliwa"></FormInput>
 
-      <form>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="brand">Marka</InputLabel>
-        <Select
-          value={brand}
-          onChange={handleChangeBrand}
-          variant='filled'
-          inputProps={{
-            name: 'marka',
-            id: 'brand',
-          }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="model">Model</InputLabel>
-        <Select
-         disabled={brand ? false : true}
-          value={model}
-          onChange={handleChangeModel}
-          variant='filled'
-          inputProps={{
-            name: 'model',
-            id: 'model',
-          }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="fuel-type">Typ paliwa</InputLabel>
-        <Select
-          disabled={model ? false : true}
-          value={fuel}
-          onChange={handleChangeFuel}
-          variant='filled'
-          inputProps={{
-            name: 'paliwo',
-            id: 'fuel-type',
-          }}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
       </form>
+      <FormButton></FormButton>
+      
     </div>
 
   );
