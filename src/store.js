@@ -1,5 +1,9 @@
 import {
-    createStore
+    createStore,
+    applyMiddleware
 } from 'redux'
+import thunk from 'redux-thunk'
 
-// const store = createStore(widgetReducer)
+import widgetReducer from './duck/reducers'
+const store = createStore(widgetReducer, applyMiddleware(thunk))
+export default store

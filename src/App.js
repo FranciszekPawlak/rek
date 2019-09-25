@@ -1,9 +1,7 @@
 import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Grid, Container,Button,Icon, Typography,MenuItem, Box, FormControl, InputLabel, Select} from '@material-ui/core';
-import {ArrowForward, ArrowDropDown, CheckCircle} from '@material-ui/icons'
+import {Typography} from '@material-ui/core';
 import img from './assets/Logotyp-Punkta.png'
-import axios from 'axios';
 import FormInput from './components/FomInput'
 import FormButton from './components/FormButton'
 const useStyles = makeStyles(theme => ({
@@ -54,42 +52,12 @@ container:{
     width: '100%',
     height: '164px'
   },
-  button: {
-    marginTop: '40px',
-  },
-  x:{
-    marginTop: '50px'
-  }
 }));
 
-const styles = theme => ({
-   mainColor:{
-    color: 'red'
-  }
-})
+
 function App() {
   const classes = useStyles();
-  const [brand, setBrand] = React.useState(false);
-  const [model, setModel] = React.useState(false);
-  const [fuel, setFuel] = React.useState(false);
-  const handleChangeBrand = event => {
-    setBrand(event.target.value);
-  };
-  const handleChangeFuel = event => {
-    setFuel(event.target.value);
-  };
-  const handleChangeModel = event => {
-    setModel(event.target.value);
-  };
 
-useEffect(()=>{
-  axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
-  axios({
-    method: 'GET',
-    url: 'https://api-dev.mfind.pl/cars'
-  })
-  .then(res => console.log(res))
-})
   return (
     <div className={classes.container}>
       <header className={classes.header}>
@@ -98,9 +66,9 @@ useEffect(()=>{
       </header>
       
       <form className={classes.form}>
-      <FormInput name="Marka"></FormInput>
-      <FormInput name="Model"></FormInput>
-      <FormInput name="Typ paliwa"></FormInput>
+      <FormInput inputType="INPUT_BRANDS" name='Marka'></FormInput>
+      <FormInput inputType="INPUT_MODELS" name='Model'></FormInput>
+      <FormInput inputType="INPUT_FUELS" name='Typ paliwa'></FormInput>
 
       </form>
       <FormButton></FormButton>
