@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/FranciszekPawlak/test/static/css/main.d61b2092.chunk.css",
+    "main.js": "/FranciszekPawlak/test/static/js/main.72d1095c.chunk.js",
+    "main.js.map": "/FranciszekPawlak/test/static/js/main.72d1095c.chunk.js.map",
+    "runtime-main.js": "/FranciszekPawlak/test/static/js/runtime-main.ae3aeb80.js",
+    "runtime-main.js.map": "/FranciszekPawlak/test/static/js/runtime-main.ae3aeb80.js.map",
+    "static/js/2.ff3c7ad7.chunk.js": "/FranciszekPawlak/test/static/js/2.ff3c7ad7.chunk.js",
+    "static/js/2.ff3c7ad7.chunk.js.map": "/FranciszekPawlak/test/static/js/2.ff3c7ad7.chunk.js.map",
+    "index.html": "/FranciszekPawlak/test/index.html",
+    "precache-manifest.e68159b6f1a9ddbaa56746a726f76d29.js": "/FranciszekPawlak/test/precache-manifest.e68159b6f1a9ddbaa56746a726f76d29.js",
+    "service-worker.js": "/FranciszekPawlak/test/service-worker.js",
+    "static/css/main.d61b2092.chunk.css.map": "/FranciszekPawlak/test/static/css/main.d61b2092.chunk.css.map"
+  }
+}
