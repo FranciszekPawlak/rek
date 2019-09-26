@@ -12,18 +12,12 @@ import  {createMuiTheme} from '@material-ui/core/styles'
 const theme = createMuiTheme({
     palette:{
         primary:{
-            main:'#67AB1C'
-            
+            main:'#67AB1C',   
         },
         secondary:{
-            main:'#fc0'
-            
-        }
-    
+            main:'#fc0' 
+        }      
     }
-
-
 })
-
 
 ReactDOM.render(<Provider store={store}><ThemeProvider theme={theme}><App /></ThemeProvider></Provider>, document.getElementById('root'));

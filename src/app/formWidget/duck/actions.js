@@ -11,24 +11,13 @@ const addFuel = item => ({
     type: types.ADD_FUEL,
     item
 })
-const setModel = item => ({
-    type: types.BRAND_SELECT,
-    item
-})
-const setBrand = item => ({
-    type: types.BRAND_SELECT,
-    item
-})
-const setFuel = item => ({
-    type: types.BRAND_SELECT,
-    item
+const clearList = listName => ({
+    type: listName
 })
 
 export default {
     addBrand,
     addModel,
     addFuel,
-    setBrand,
-    setModel,
-    setFuel
+    clearList
 }

@@ -1,0 +1,14 @@
+const ADD_BRAND = 'ADD_BRAND'
+const ADD_MODEL = 'ADD_MODEL'
+const ADD_FUEL = 'ADD_FUEL'
+const CLEAR_BRANDS = 'CLEAR_BRANDS'
+const CLEAR_MODELS = 'CLEAR_MODELS'
+const CLEAR_FUELS = 'CLEAR_FUELS'
+export default {
+    ADD_BRAND,
+    ADD_MODEL,
+    ADD_FUEL,
+    CLEAR_BRANDS,
+    CLEAR_MODELS,
+    CLEAR_FUELS
+}

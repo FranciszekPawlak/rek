@@ -16,8 +16,6 @@ const getAllBrands = () => async (dispatch) => {
 }
 
 
-
-
 const axiosModels = async (brand) => {
     axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
     const response = await axios({
@@ -33,9 +31,7 @@ const getAllModels = (brand) => async (dispatch) => {
 }
 
 
-
 const axiosFuels = async (brand, model) => {
-    console.log('przez req')
     axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
     const response = await axios({
         method: 'GET',
@@ -46,11 +42,11 @@ const axiosFuels = async (brand, model) => {
 }
 const getAllFuels = (brand, model) => async (dispatch) => {
     const fuels = await axiosFuels(brand, model)
-    console.log(fuels)
-    fuels.map(model => dispatch(actions.addFuel(model.model_name)))
+    fuels.map(model => dispatch(actions.addFuel(model.fuel_name)))
 }
+
 export default {
     getAllBrands,
     getAllModels,
-    getAllFuels
+    getAllFuels,
 }
