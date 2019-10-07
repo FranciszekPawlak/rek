@@ -1,23 +1,18 @@
-import types from './types'
-const addBrand = item => ({
-    type: types.ADD_BRAND,
+const addItem = (listName, item) => ({
+    type: listName,
     item
 })
-const addModel = item => ({
-    type: types.ADD_MODEL,
-    item
-})
-const addFuel = item => ({
-    type: types.ADD_FUEL,
-    item
-})
+
 const clearList = listName => ({
     type: listName
 })
+const setSelect = (selectName, item) => ({
+    type: selectName,
+    item
+})
 
 export default {
-    addBrand,
-    addModel,
-    addFuel,
-    clearList
+    addItem,
+    clearList,
+    setSelect
 }

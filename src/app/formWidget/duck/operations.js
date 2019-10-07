@@ -1,6 +1,7 @@
 import axios from 'axios'
 import actions from './actions'
-
+import types from './types'
+//handle brand data
 const axiosBrands = async (x) => {
     axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
     const response = await axios({
@@ -12,10 +13,10 @@ const axiosBrands = async (x) => {
 }
 const getAllBrands = () => async (dispatch) => {
     const brands = await axiosBrands()
-    brands.map(brand => dispatch(actions.addBrand(brand.make_name)))
+    brands.map(brand => dispatch(actions.addItem(types.ADD_BRAND, brand.make_name)))
 }
 
-
+//handle model data
 const axiosModels = async (brand) => {
     axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
     const response = await axios({
@@ -27,10 +28,10 @@ const axiosModels = async (brand) => {
 }
 const getAllModels = (brand) => async (dispatch) => {
     const models = await axiosModels(brand)
-    models.map(model => dispatch(actions.addModel(model.model_name)))
+    models.map(model => dispatch(actions.addItem(types.ADD_MODEL, model.model_name)))
 }
 
-
+//handle fuel data
 const axiosFuels = async (brand, model) => {
     axios.defaults.headers.common['Authorization'] = 'Basic YXV0a2FfYXBpOmF1dGthX2FwaV8yMDE5';
     const response = await axios({
@@ -42,7 +43,7 @@ const axiosFuels = async (brand, model) => {
 }
 const getAllFuels = (brand, model) => async (dispatch) => {
     const fuels = await axiosFuels(brand, model)
-    fuels.map(model => dispatch(actions.addFuel(model.fuel_name)))
+    fuels.map(model => dispatch(actions.addItem(types.ADD_FUEL, model.fuel_name)))
 }
 
 export default {

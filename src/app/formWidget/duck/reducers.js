@@ -4,6 +4,9 @@ const INITIAL_STATE = {
     brandsList: [],
     modelsList: [],
     fuelsList: [],
+    brandSelect: false,
+    modelSelect: false,
+    fuelSelect: false
 }
 const widgetReducer = (state =
     INITIAL_STATE, action) => {
@@ -37,6 +40,21 @@ const widgetReducer = (state =
             return ({
                 ...state,
                 fuelsList: []
+            })
+        case types.SET_BRAND:
+            return ({
+                ...state,
+                brandSelect: action.item
+            })
+        case types.SET_MODEL:
+            return ({
+                ...state,
+                modelSelect: action.item
+            })
+        case types.SET_FUEL:
+            return ({
+                ...state,
+                fuelSelect: action.item
             })
 
         default:

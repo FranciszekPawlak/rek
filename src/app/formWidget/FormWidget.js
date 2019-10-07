@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {Typography} from '@material-ui/core';
 import img from '../../assets/Logotyp-Punkta.png'
 import Form from './components/Form'
+import {Provider} from 'react-redux'
+import store from './store'
 
 const useStyles = makeStyles(theme => ({
     container:{
@@ -56,7 +58,9 @@ const useStyles = makeStyles(theme => ({
 
 const FormWidget = () => {
     const classes = useStyles();
-    return ( <div className={classes.container}>
+    return ( 
+      <Provider store={store}>
+        <div className={classes.container}>
         <header className={classes.header}>
         <img src={img} alt="Logotyp-Punkta" className={classes.logo}/>
         <Typography className={classes.headline}>oszczędź nawet 580 złotych na oc</Typography>
@@ -64,7 +68,9 @@ const FormWidget = () => {
         <form className={classes.form}>
         <Form></Form>
         </form>      
-      </div> );
+      </div> 
+      </Provider>
+      );
 }
  
 export default FormWidget;

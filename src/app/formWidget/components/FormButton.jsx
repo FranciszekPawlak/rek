@@ -18,12 +18,12 @@ const useStyles = makeStyles({
     
   });
 
-const FormButton = ({url,disabled}) => {
+const FormButton = ({url,disabled,name}) => {
     const classes = useStyles();
 
     return (
     <Button href={url} target="_blank" disabled={disabled ? true : false} classes={{root: classes.button,}}  fullWidth color='secondary' variant='contained'>
-          oblicz składkę
+          {name}
         <ArrowForward classes={{root: classes.icon, }} />
         </Button>
     );
