@@ -1,6 +1,7 @@
-const addItem = (listName, item) => ({
+const addItem = (listName, item, itemHelper) => ({
     type: listName,
-    item
+    item,
+    itemHelper
 })
 
 const clearList = listName => ({

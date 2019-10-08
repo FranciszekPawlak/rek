@@ -7,6 +7,7 @@ const CLEAR_FUELS = 'CLEAR_FUELS'
 const SET_BRAND = 'SET_BRAND'
 const SET_MODEL = 'SET_MODEL'
 const SET_FUEL = 'SET_FUEL'
+const SET_FUEL_CODE = 'SET_FUEL_CODE'
 export default {
     ADD_BRAND,
     ADD_MODEL,
@@ -16,5 +17,7 @@ export default {
     CLEAR_FUELS,
     SET_BRAND,
     SET_MODEL,
-    SET_FUEL
+    SET_FUEL,
+    SET_FUEL_CODE
+
 }

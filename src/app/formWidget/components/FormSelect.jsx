@@ -45,8 +45,9 @@ const FormSelect = ({name, selectList, value, disabled}) => {
                 dispatch(actions.clearList(types.CLEAR_FUELS))
                 dispatch(actions.setSelect(types.SET_MODEL, false))
                 dispatch(actions.setSelect(types.SET_FUEL, false))
-                localStorage.setItem('model', null)
-                localStorage.setItem('fuel', null)
+                localStorage.removeItem('model')
+                localStorage.removeItem('fuel')
+                localStorage.removeItem('fuelCode')
                 //set values
                 dispatch(actions.setSelect(types.SET_BRAND, select))
                 localStorage.setItem('brand', select)
@@ -56,14 +57,19 @@ const FormSelect = ({name, selectList, value, disabled}) => {
                     //clear next steps
                     dispatch(actions.clearList(types.CLEAR_FUELS))
                     dispatch(actions.setSelect(types.SET_FUEL, false))
-                    localStorage.setItem('fuel', null)
+                    localStorage.removeItem('fuel')
+                    localStorage.removeItem('fuelCode')
                     //set values
                     dispatch(actions.setSelect(types.SET_MODEL, select))
                     localStorage.setItem('model', select)
             break;
             case 'Typ paliwa':
+                    const fuelSelect = selectList.filter(item=> item.name === select ? item.code : null)
+                    const fuelCode = fuelSelect[0].code
                     dispatch(actions.setSelect(types.SET_FUEL, select))
+                    dispatch(actions.setSelect(types.SET_FUEL_CODE, fuelCode))
                     localStorage.setItem('fuel', select)
+                    localStorage.setItem('fuelCode', fuelCode)
             break;
             default: return
         }
@@ -82,7 +88,7 @@ const FormSelect = ({name, selectList, value, disabled}) => {
           onChange={handleChange}
           IconComponent={value ?  CheckCircle : ArrowDropDown}
         >
-          {selectList ? (selectList.map((fuel,index) =>(<MenuItem key={index} value={fuel}>{fuel}</MenuItem>))) : null}
+          {selectList ? (selectList.map((item,index) =>(<MenuItem key={index} value={item.name}>{item.name}</MenuItem>))) : null}
         </Select>
       </FormControl> );
 }

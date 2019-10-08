@@ -43,7 +43,7 @@ const axiosFuels = async (brand, model) => {
 }
 const getAllFuels = (brand, model) => async (dispatch) => {
     const fuels = await axiosFuels(brand, model)
-    fuels.map(model => dispatch(actions.addItem(types.ADD_FUEL, model.fuel_name)))
+    fuels.map(model => dispatch(actions.addItem(types.ADD_FUEL, model.fuel_name, model.fuel_code)))
 }
 
 export default {

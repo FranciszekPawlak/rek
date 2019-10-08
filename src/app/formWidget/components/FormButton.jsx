@@ -15,7 +15,6 @@ const useStyles = makeStyles({
     icon:{
         marginLeft: '40px',
     },
-    
   });
 
 const FormButton = ({url,disabled,name}) => {
@@ -29,4 +28,4 @@ const FormButton = ({url,disabled,name}) => {
     );
 }
  
-export default FormButton;
+export default FormButton
